@@ -1,0 +1,262 @@
+/* approve-style.css */
+/* Maintain theme from previous page */
+html {
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+    min-height: 100vh;
+    color: #333333;
+}
+
+.container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1.25rem;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    padding: 2.5rem 0;
+    animation: fadeIn 1.5s ease-in;
+}
+
+.header h1 {
+    font-family: 'Times New Roman', cursive;
+    font-style: italic;
+    font-size: 4rem;
+    color: #ffffff;
+    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+}
+
+.question-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+    max-width: 35rem;
+    margin: 2rem auto;
+    backdrop-filter: blur(10px);
+}
+
+.question-box h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #ff69b4;
+    font-family: 'Mystery Quest', cursive;
+}
+
+.button-group {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.yes-button, .no-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.5rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.yes-button {
+    background: #4CAF50;
+    color: white;
+}
+
+.no-button {
+    background: #ff4444;
+    color: white;
+}
+
+.yes-button:hover {
+    background: #45a049;
+    transform: scale(1.05);
+}
+
+.no-button:hover {
+    background: #cc0000;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-1.25rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 48em) {
+    .header h1 {
+        font-size: 3rem;
+    }
+    
+    .question-box h2 {
+        font-size: 2rem;
+    }
+    
+    .yes-button, .no-button {
+        font-size: 1.2rem;
+        padding: 0.8rem 2rem;
+    }
+}
+
+@media (max-width: 30em) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .question-box {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .question-box h2 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Add these new styles */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+video {
+    width: 80%;
+    max-width: 800px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #ff1493;
+    transform: rotate(90deg);
+}
+
+/* Popup message styles */
+.popup-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: #ff69b4;
+    padding: 1.5rem 2.5rem;
+    border-radius: 1rem;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.3);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.popup-emoji {
+    font-size: 1.5rem;
+    animation: pulse 0.8s infinite;
+}
+
+/* Animations */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(10px); }
+    50% { transform: translateX(-10px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Add to existing media queries */
+@media (max-width: 48em) {
+    .popup-message {
+        font-size: 1rem;
+        padding: 1rem 2rem;
+    }
+}
+
+/* In approve-style.css */
+.video-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+video {
+    width: 80%;
+    max-width: 800px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #ff69b4;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+    background: #ff1493;
+    transform: rotate(90deg);
+}

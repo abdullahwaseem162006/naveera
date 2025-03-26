@@ -1,0 +1,248 @@
+/* Base styles */
+html {
+    font-size: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+    min-height: 100vh;
+    color: #ffffff;
+}
+
+/* Layout styles */
+.container {
+    max-width: 75rem;
+    margin: 0 auto;
+    padding: 1.25rem;
+    text-align: center;
+}
+
+.header {
+    padding: 2.5rem 0;
+    animation: fadeIn 1.5s ease-in;
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.875rem;
+    margin: 3.125rem 0;
+}
+
+/* Component styles */
+.header h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 4rem;
+    color: #333333;
+    text-shadow: 0.125rem 0.125rem 0.25rem rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+}
+
+.eid-image {
+    max-width: 25rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.eid-image:hover {
+    transform: scale(1.05);
+}
+
+.greeting-card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.875rem;
+    border-radius: 0.9375rem;
+    backdrop-filter: blur(10px);
+    max-width: 31.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Button styles */
+.flower-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: #ffffff;
+    color: #ff69b4;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.flower-button:hover {
+    background: #ff1493;
+    color: #ffffff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.flower-button:active {
+    transform: translateY(0);
+}
+
+.animated-text {
+    font-size: 2rem;
+    color: #333333;
+    margin: 1.25rem 0;
+    animation: float 3s ease-in-out infinite;
+    font-family: 'Mystery Quest', cursive;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-1.25rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-1.25rem); }
+    100% { transform: translateY(0); }
+}
+
+/* Responsive design */
+@media (max-width: 48em) {
+    .header h1 {
+        font-size: 3rem;
+    }
+    
+    .eid-image {
+        max-width: 18.75rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .flower-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 30em) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .animated-text {
+        font-size: 1.5rem;
+    }
+    
+    .greeting-card {
+        padding: 1rem;
+    }
+}
+
+/* Add these new styles */
+.flower-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.flower {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0;
+    animation: flowerFall 3s linear forwards;
+    z-index: 2;
+}
+
+/* Modify flower animation in style.css */
+@keyframes flowerFall {
+    0% {
+        opacity: 1;
+        transform: translateY(100vh) translateX(0);
+    }
+    100% {
+        opacity: 0;
+        -webkit-transform: translateY(0) translateX(50vw);
+        transform: translateY(0) translateX(50vw);
+    }
+}
+/* Add this to existing .flower-button */
+.flower-button {
+    position: relative;
+    z-index: 2;
+}
+
+.flower-button {
+    /* previous styles */
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.flower-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: buttonEffect 0.5s ease-out;
+}
+
+@keyframes buttonEffect {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(30);
+        opacity: 0;
+    }
+}
+/* Add button container styling */
+.button-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Approval button styling */
+.approval-button {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.approval-button:hover {
+    background: #45a049;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+}
+
+.approval-button:active {
+    transform: translateY(0);
+}
+
